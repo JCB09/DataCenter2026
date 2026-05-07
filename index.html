@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Data Center Decision Overview 2026</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="charts.css">
 </head>
 <body>
 
@@ -108,7 +109,70 @@
 
     <hr>
 
-    <div>Søylediagram 3 stk</div>
+    <!-- Søylediagrammene starter her -->
+
+    <!-- Søylediagram 1 -->
+    <div class="chart-container">
+  <h2 class="chart-title border-remove">Energy Benefit</h2>
+  <div class="chart">
+    <div class="y-axis">
+      <!-- <span>Energy Benefit</span> -->
+      <!-- <span>80</span> -->
+      <!-- <span>60</span> -->
+      <!-- <span>40</span> -->
+      <!-- <span>20</span> -->
+      <!-- <span>0</span> -->
+    </div>
+    <div class="bars">
+      <div class="bar-wrapper">
+        <div class="bar bar-upgrade" data-value="70"></div>
+        <span class="bar-label">Upgrade</span>
+      </div>
+      <div class="bar-wrapper">
+        <div class="bar bar-newbuild" data-value="90"></div>
+        <span class="bar-label">New Build</span>
+      </div>
+      <div class="bar-wrapper">
+        <div class="bar bar-shutdown" data-value="5"></div>
+        <span class="bar-label">Shut Down</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function animateBars() {
+    const bars = document.querySelectorAll('.bar');
+    const chartHeight = 300;
+
+    bars.forEach(bar => {
+      const value = parseInt(bar.dataset.value);
+      const height = (value / 100) * chartHeight;
+      bar.style.height = height + 'px';
+    });
+  }
+
+  // Animate når elementet kommer i viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateBars();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.9 });
+
+  observer.observe(document.querySelector('.chart-container'));
+</script>
+
+
+    <!-- Søylediagram 2 -->
+     
+    
+    <!-- Søylediagram 3--> 
+
+
+    
 
     <hr>
 
